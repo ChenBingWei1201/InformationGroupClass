@@ -1,0 +1,2 @@
+
+element.addEventListener("click", clickButtonFunction);
