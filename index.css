@@ -1,4 +1,4 @@
-/* #blue{
+#blue{
     background-color: blue;
 }
 
@@ -16,7 +16,7 @@ div {
 .one , 
 .two {
     font-size: 30pt;
-} */
+}
 
 div > p {
     background-color: red;
