@@ -1,0 +1,85 @@
+/* p {
+    text-align: center;
+    color: red;
+    font-size: 14pt;
+  } */
+
+/* #num1{
+    color:red;
+    background-color: aqua;
+    font-size: 20pt;
+    
+}
+#num2{
+    color:orange;
+    font-weight: bold;
+    font-size: 20pt;
+}
+#num3{
+    color:green;
+    font-size: 20pt;
+} */
+
+/* .box{
+    color:red;
+    font-size: 14pt;
+}
+*/
+
+/* * {
+    color:white;
+    background-color:black;
+} */
+
+/* h1, h2{
+    color:green;
+    font-size: 20pt;
+}
+
+#div1 > p{
+    color: blueviolet;
+} */
+
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url("http://blog.hostbaby.com/wp-content/uploads/2013/07/scuffedstatic_dark1400x900.jpg");
+    /* 預設會 repeat 至填滿 */
+    /* 也可以設定縱向、橫向 repeat 即可 (repeat-y, repeat-x) */
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-attachment: fixed; /* scroll or fixed */
+    background-size: cover;
+  }
+  
+h1, #eg3, #eg4{
+    color: white;
+}
+
+div>p{
+    color: red;
+}
+
+div~p{
+    background-color: yellow;
+}
+.animation {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    animation-name: example; /* 對應的動畫效果 */
+    animation-duration: 5s; /* 一次動畫的時間 */
+    animation-timing-function: linear; /* 動畫的變化 */
+    animation-delay: 2s; /* 開始動畫前的delay */
+    animation-iteration-count: infinite; /* 動畫循環次數 */
+    animation-direction: alternate;  /* 動畫正轉、倒轉(reverse)、輪流 */
+  }
+  
+  @keyframes example {
+    /* 動畫進展到幾%的時候會呈現的樣子 */
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:400px; top:0px;}
+    50%  {background-color:blue; left:400px; top:400px;}
+    75%  {background-color:green; left:0px; top:400px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }

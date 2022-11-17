@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Business website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-highway.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+
+      <div class="navigation w3-highway-blue w3-container">
+        <nav class="nav-container w3-padding-large">
+          <div class="logo">
+            <a href="#home" >CONNECT<span>FACTOR</span></a>
+          </div>
+          <div class="mobile-button">
+            <span style="float: right;" onclick="toggleMobileNavigation()">&#9776;</span>
+          </div>
+          <div class="links">
+            <a href="#about" >About</a>
+            <a href="#services" >Services</a>
+            <a href="#careers" >Careers</a>
+            <a href="#contact" >Contact</a>            
+          </div>
+          <div id="mobile-sidenav" class="mobile-links w3-highway-blue">
+            <div class="mobile-logo" style="display: inline;">
+              <a href="#home" class="logo">CONNECT<span>FACTOR</span></a>
+              <span style="width: 100%;"></span>
+              <a href="javascript:void(0)" class="closebtn" onclick="toggleMobileNavigation()">&times;</a>
+            </div>
+            <a href="#about" onclick="toggleMobileNavigation()">About Us</a>
+            <a href="#services" onclick="toggleMobileNavigation()">Services</a>
+            <a href="#careers" onclick="toggleMobileNavigation()">Careers</a>
+            <a href="#contact" onclick="toggleMobileNavigation()">Contact</a>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero" id="home">
+        <div class="text container">
+          <p class="pre-title">One stop for global success</p>
+          <h1 class="title"> CONNECT<span>FACTOR</span></h1>
+          <p class="post-title">Connect with the rest of the world!</p>
+          <a class="w3-button w3-round-large w3-indigo w3-hover-blue" href="#services">OUR SERVICES</a> 
+        </div>
+      </div>
+
+      <div class="about container w3-padding-large" id="about">
+        <div class="text-one">
+          <h2>About Us</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a class="w3-button w3-round-large w3-indigo w3-hover-blue" href="about.html">Read more</a> 
+        </div>
+        <div class="text-one">
+          <h2>Our Vision</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <a class="w3-button w3-round-large w3-indigo w3-hover-blue" href="vision.html">Read more</a> 
+        </div>
+      </div>
+
+      <div class="w3-panel w3-highway-blue numbers">
+        <h2 class="w3-center w3-xxxlarge">WE HAVE</h2>
+        <p class="w3-center w3-xxxlarge show-medium">
+          <?xml version="1.0" encoding="utf-8"?>
+          <svg x="0px" y="0px" width="36" fill="#bed9f3" stroke="#bed9f3"
+            viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
+          <g id="Down-arrow">
+            <path d="M17.2929993,29.7070007c-0.3906994-0.3906002-0.3906994-1.0234013,0-1.4140015
+              c0.3906002-0.3906002,1.0234013-0.3906002,1.4140015,0L32,41.5858994l13.2929993-13.2929001
+              c0.3905983-0.3906002,1.0233994-0.3906002,1.4140015,0C46.902298,28.4883003,47,28.7441998,47,29
+              c0,0.2558994-0.097702,0.5116997-0.2929993,0.7070007l-14,14c-0.3906021,0.3906975-1.0234013,0.3906975-1.4140015,0
+              L17.2929993,29.7070007z"/>
+            <path d="M32,64c17.6730957,0,32-14.3269005,32-32S49.6730957,0,32,0C14.3268003,0,0,14.3268995,0,32S14.3268003,64,32,64z M32,62
+              C15.4579,62,2,48.542099,2,32C2,15.4580002,15.4579,2,32,2s30,13.4580002,30,30C62,48.542099,48.542099,62,32,62z"/>
+          </svg>
+        </p>
+        <div class="container w3-padding-large">
+          <div class="text">
+            <p class="number">479</p>
+            <p>Clients</p>
+          </div>
+          <div class="text">
+            <p class="number">15</p>
+            <p>Employees</p>
+          </div>
+          <div class="text">
+            <p class="number">20</p>
+            <p>Years of experience</p>
+          </div>
+          <div class="text">
+            <p class="number">35</p>
+            <p>Awards</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="services container" id="services">
+        <h2 class="w3-center">Our services</h2>
+        <div class="cards w3-padding-large w3-margin-top">
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>WEB DEVELOPMENT</h3>
+            <div class="card-text">
+              <p>We will build your website and fulfill all your needs. SEO optimization is included.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>MOBILE DEVELOPMENT</h3>
+            <div class="card-text">
+              <p>We will build your mobile application and fulfill all your needs. SEO optimization is included.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>SEO AND PERFORMANCE OPTIMIZATION</h3>
+            <div class="card-text">
+              <p>We will optimize your existing website or mobile application in SEO and performance.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>CONSULTING</h3>
+            <div class="card-text">
+              <p>We offer <span class="">free</span> consultation about your idea and offer you best approach on how to realize it.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>DIGITAL MARKETING</h3>
+            <div class="card-text">
+              <p>We will ensure that your idea is well known in attempt to gather user base and expand your idea.</p>
+            </div>
+          </div>
+          <div class="card w3-card-2 w3-padding-large w3-border w3-border-blue w3-round-large">
+            <h3>EVENT HOSTING</h3>
+             <div class="card-text">
+              <p>We will take care of event hosting and management process for your public. You just need to appear on the event, as a host.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="careers container" id="careers">
+        <h2 class="w3-center">Careers at CONNECTFACTOR</h2>
+        <div class="cards w3-padding-large w3-margin-top">
+
+            <div class="card w3-card-4">
+              <header class="w3-container w3-indigo">
+                 <h3>DIGITAL MARKETING CONSULTANT</h3>
+              </header>
+
+              <div class="content w3-container">
+                <div class="card-text" style="padding-bottom: 20px;">
+                  <h4>Requirements</h4>
+                  <ul style="list-style-type: none;">
+                    <li>3 year of working experience</li>
+                    <li>Advanced knowledge of Digital Marketing</li>
+                    <li>Advanced knowledge of Analytics and Ads tools</li>
+                    <li>Advanced knowledge of Crossbrowser testing tools</li>
+                    <li>Great soft skills</li>
+                    <li>Can work in a team or alone efficiently</li>
+                  </ul>
+                  <h4>Feats</h4>
+                  <ul style="list-style-type: none;">
+                    <li>Great salary, increased with your experience</li>
+                    <li>Work from home</li>
+                    <li>We give you laptop for your work</li>
+                    <li>Unlimited CONNECTFACTOR SWAG</li>
+                  </ul> 
+                </div>
+              </div>
+              <footer class="w3-container" style="padding: 0">
+                <a class="w3-button w3-indigo w3-hover-blue" style="width: 100%;" href="#contact">Apply</a>
+              </footer>
+            </div>
+
+            <div class="card w3-card-4 w3-round-large">
+              <header class="w3-container w3-indigo">
+                 <h3>SENIOR FRONTEND DEVELOPER</h3>
+              </header>
+
+              <div class="content w3-container">
+                <div class="card-text" style="padding-bottom: 20px;">
+                <h4>Requirements</h4>
+                <ul style="list-style-type: none;">
+                  <li>5 years of working experience</li>
+                  <li>Advanced knowledge of HTML and CSS</li>
+                  <li>Advanced knowledge of advanced Javascript</li>
+                  <li>Advanced knowledge of at least one frontend frameworks</li>
+                  <li>Knowledge of Git and Github</li>
+                  <li>Knowledge of Unit Tests</li>
+                  <li>Can work in a team or alone efficiently</li>
+                </ul>
+                <h4>Feats</h4>
+                <ul style="list-style-type: none;">
+                  <li>Great salary, increased with your experience</li>
+                  <li>Work from home</li>
+                  <li>We give you laptop for your work</li>
+                  <li>Unlimited CONNECTFACTOR SWAG</li>
+                </ul>
+                </div>
+              </div>
+              <footer class="w3-container" style="padding: 0">
+                <a class="w3-button w3-indigo w3-hover-blue" style="width: 100%;" href="#contact">Apply</a>
+              </footer>
+            </div>
+
+            <div class="card w3-card-4">
+              <header class="w3-container w3-indigo">
+                 <h3>JUNIOR FRONTEND DEVELOPER</h3>
+              </header>
+
+              <div class="content w3-container">
+                <div class="card-text" style="padding-bottom: 20px;">
+                <h4>Requirements</h4>
+                <ul style="list-style-type: none;">
+                  <li>1 year of working experience</li>
+                  <li>Knowledge of HTML and CSS</li>
+                  <li>Knowledge of Javascript</li>
+                  <li>Knowledge of at least one frontend framework</li>
+                  <li>Will to learn more both in team and alone</li>
+                </ul>
+                <h4>Feats</h4>
+                <ul style="list-style-type: none;">
+                  <li>Great salary, increased with your experience</li>
+                  <li>Work from home</li>
+                  <li>We give you laptop for your work</li>
+                  <li>Unlimited CONNECTFACTOR SWAG</li>
+                </ul>
+                </div>
+              </div>
+              <footer class="w3-container" style="padding: 0">
+                <a class="w3-button w3-indigo w3-hover-blue" style="width: 100%;" href="#contact">Apply</a>
+              </footer>
+            </div>
+        </div>
+      </div>
+
+      <div class="contact container" id="contact">
+        <div class="short-contact">
+          <h2>Contact us</h2>
+          <p class="w3-xlarge">We would like to hear from you!</p>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-location-arrow"></i><span style="margin-left:10px;"><a href="https://www.google.com/maps/place/London,+UK/@51.5287352,-0.3817852,10z/data=!3m1!4b1!4m5!3m4!1s0x47d8a00baf21de75:0x52963a5addd52a99!8m2!3d51.5072178!4d-0.1275862" target="_blank">23th Street, London, England</a></span><br>
+            <i class="fa fa-envelope-o"></i><span style="margin-left:10px;"><a href="connect@factor.com">connect@factor.com</a></span><br>
+            <i class="fa fa-phone"></i><span style="margin-left:10px;"><a href="+44 0197532486">+44 0197532486</a></span><br>
+          </div>
+          <div class="w3-large w3-margin-top contact-info">
+            <i class="fa fa-linkedin"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">- LinkedIn</a></span><br>
+            <i class="fa fa-facebook"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;"> - Facebook</a></span><br>
+            <i class="fa fa-twitter"></i><span style="margin-left:10px;"><a href="#" target="_blank" style="text-decoration: none;">- Twitter</a></span><br>
+          </div>
+        </div>
+        <div class="form w3-margin-top">
+          <div class="container w3-round-xlarge">
+            <form class="w3-highway-blue w3-padding-large w3-round-large">
+              <label for="fname">First Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name">
+
+              <label for="lname">Last Name</label>
+              <input type="text" id="email" name="email" placeholder="Your email">
+
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+              
+              <p>By submiting this form, you agree to our <a href="privacy-policy.html" target="_blank">privacy policy</a></p><br>
+              <input class="w3-metro-blue" type="submit" value="Submit">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class=" w3-highway-blue w3-padding-large" id="footer">
+        <p class="w3-center logo">© 2021 - CONNECT<span>FACTOR</span> - All rights reserved</p>
+      </div>
+
+  <script>
+    function toggleMobileNavigation() {
+      const mobileNavigation = document.getElementById("mobile-sidenav");
+      mobileNavigation.classList.toggle('mobile-links-active');
+    }
+</script>
+  </body>
+</html>
