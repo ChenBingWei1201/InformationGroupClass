@@ -9,9 +9,9 @@ class Car extends React.Component {
 
         const ClickCar = () => {
             console.log(money);
-            setMoney(money-10);
+            setMoney(money+10);
         }
-      return <h2 onClick={ClickCar}>Hi, I am a {color} Car!{money}</h2>;
+      return <h2 onClick={ClickCar}>Hi, I{setMoney} am a {color} Car!{money}</h2>;
     }
   }
 export default Car;
