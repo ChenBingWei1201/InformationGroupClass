@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"> 
+        <title>form</title>
+        <link rel="stylesheet" href="styles/style.css">
+    </head>
+    <body>
+        <!--form(表單)-->
+        <h1>Form</h1>
+        <h2>Please fill out the form.</h2>
+        <form method="post"> <!-- action="form.php"--> 
+            <p><input required type="text" name="name" id="name" placeholder="your name"></p>
+            <p><input type="text" name="account" id="account" placeholder="account number"></p>
+            <p><input type="password" name="password" placeholder="password" pattern="[a,z]{0,9}"></p>
+            <p><textarea name="commemts" id="commemts" cols="30" rows="10" placeholder="type your comments here" ></textarea></p>
+            <p>What below program have you learned before?</p> <!--radio 只能單選 name 要相同-->
+            <p><input type="radio" name="learned" id="HTML" >HTML</p>
+            <p><input type="radio" name="learned" id="CSS">CSS</p>
+            <p><input type="radio" name="learned" id="JavaScript">JavaScript</p> <!-- autofocus-->
+            <p>Which color do you like?</p> <!--checkbox 可以單選或多選 name 可不同-->
+            <p><input type="checkbox" name="checkbox" id="red">red</p>  
+            <p><input type="checkbox" name="checkbox" id="blue">blue</p>  
+            <p><input type="checkbox" name="checkbox" id="green">green</p>
+            <p><input type="file" name="file" accept="image/*, .pdf, .zip" multiple></p>
+            <p><input type="file" accept="video/*" capture="environment"></p>
+            <p>search: <input type="search" name="q"></p>
+            <p>tel: <input type="tel"></p>
+            <p>url: <input type="url" pattern=".com"></p>
+            <p>date: <input type="date"></p>
+            <p>time: <input type="time"></p>
+            <p>number: <input type="number" max="10000" min="0" step="0.1"></p>
+            <p>range: <input type="range" min="-10" max="10"></p>
+            <p>color selector: <input type="color" value="#ff0000"></p>
+            <p><input type="reset" value="Reset"></p>
+            <p><input type="submit" value="Submit!"></p>
+            <p><input type="button" name="button" id="button" value="Click me!"></p>
+            <p><button disabled>Click me!</button></p>
+        </form>
+        <a href="index.html" class="other_page">Home</a>
+    </body>
+</html>

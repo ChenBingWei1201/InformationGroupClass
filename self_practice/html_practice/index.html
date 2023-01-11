@@ -24,16 +24,20 @@
         
         <!-- 我們指示搜尋引擎不要索引這個網頁，也不要檢索網頁上的任一連結 -->
         <meta name="robots" content="noindex, nofollow">
-
+        
         <link rel="preload" href="styles/style.css" as="style">
         <link href="styles/style.css" rel="stylesheet" type="text/css">
         <link rel="icon" href="/favicon.ico">
-    </head>
-    <body><!--https://source.unsplash.com/random/300x200-->
+      </head>
+      <body><!--https://source.unsplash.com/random/300x200-->
+        
+        <a href="page2.html" class="other_page">page2</a>
+        <br>
+        <a href="form.html" class="other_page">form</a>
         <h1 title="I love DEA so much!">I <br>love DEA!</h1>
         <h2 title="Go! Go! DEA">CTBC <br> DEA</h2>
         <h3 title="DEA will win!">DEA is&ensp;&ensp;&ensp;&ensp;&ensp; my life</h3><!-- &ensp;半形空格-->
-        <img src="images/DEA.png" width="300" alt="random picture" title="refresh random picture every 5s" loading="lazy">
+        <img src="images/DEA.png" width="300" alt="random picture" title="refresh random picture every 5s" loading="lazy"  autofocus>
         <p id="p1" class="box" style="color:red">Taiwan Basketall League</p>
         <p id="p2" class="box">National Baseketall Association</p>
         <a href="https://www.mozilla.org/zh-TW/about/manifesto/" tabindex="1" target="_blank">Mozilla Manifesto</a>
@@ -135,12 +139,7 @@
           
           <!-- CSS 樣式設定 -->
         <style>
-          .gray-bg {
-            background-color: gray;
-          }
-          .green-bg {
-            background-color: green;
-          }
+          
         </style>
   
         <!-- 表格 colgroup 設定 -->
@@ -169,44 +168,52 @@
             <td>NA</td>
           </tr>
         </table>
+
         <br>
-        <form method="post" action="form.php"> <!--form(表單)-->
-        <p><input required type="text" name="name" id="name" placeholder="your name"></p>
-        <p><input type="text" name="account" id="account" placeholder="account number"></p>
-        <p><input type="password" name="password" placeholder="password" pattern="[a,z]{0,9}"></p>
-        <p><textarea name="commemts" id="commemts" cols="30" rows="10" placeholder="type your comments here" ></textarea></p>
-        <p>What below program have you learned before?</p> <!--radio 只能單選 name 要相同-->
-        <p><input type="radio" name="learned" id="HTML" >HTML</p>
-        <p><input type="radio" name="learned" id="CSS">CSS</p>
-        <p><input type="radio" name="learned" id="JavaScript" autofocus>JavaScript</p>
-        <p>Which color do you like?</p> <!--checkbox 可以單選或多選 name 可不同-->
-        <p><input type="checkbox" name="checkbox" id="red">red</p>  
-        <p><input type="checkbox" name="checkbox" id="blue">blue</p>  
-        <p><input type="checkbox" name="checkbox" id="green">green</p>
-        <p><input type="file" name="file" accept="image/*, .pdf, .zip" multiple></p>
-        <p><input type="file" accept="video/*" capture="environment"></p>
-        <p>search: <input type="search" name="q"></p>
-        <p>tel: <input type="tel"></p>
-        <p>url: <input type="url" pattern=".com"></p>
-        <p>date: <input type="date"></p>
-        <p>time: <input type="time"></p>
-        <p>number: <input type="number" max="10000" min="0" step="0.1"></p>
-        <p>range: <input type="range" min="-10" max="10"></p>
-        <p>color selector: <input type="color" value="#ff0000"></p>
-        <p><input type="reset" value="Reset"></p>
-        <p><input type="submit" value="Submit!"></p>
-        <p><input type="button" name="button" id="button" value="Click me!" disabled></p>
-      </form>
-      <!-- HTML 下拉式選單 - <select>, <option>, <optgroup> 標籤 (tag) -->
-      <select>
-        <option>Please choose an animal you like the most.</option>
-        <option>Dog</option>
-        <option>Cat</option>
-        <option>Lion</option>
-        <option>Elephant</option>
-        <option>Pig</option>
-        <option>Tiger</option>
-      </select>
-      
+        
+        <!-- HTML 下拉式選單 - <select>, <option>, <optgroup> 標籤 (tag) -->
+        <p>Please choose an animal you like the most.</p>
+        <select name="animal">  <!--mutiple-->
+          <option>Animal</option>
+          <option>Dog</option>
+          <option>Cat</option>
+          <option>Lion</option>
+          <option>Elephant</option>
+          <option>Pig</option>
+          <option>Tiger</option>
+        </select>
+        <!--optgroup-->
+        <select name="cat_or_dog">
+          <optgroup label="Cats">
+            <option>Tiger</option>
+            <option>Leopard</option>
+            <option>Lynx</option>
+          </optgroup>
+          <optgroup label="Dogs">
+            <option>Grey Wolf</option>
+            <option>Red Fox</option>
+            <option>Fennec</option>
+          </optgroup>
+        </select>
+
+        <form>
+          <fieldset>
+            <legend>Personal details</legend>
+            <label>Your name:</label> <input name="yourname">
+            <label>Your age:</label> <input type="number" name="yourage">
+          </fieldset>
+        
+          <fieldset>
+            <legend>Your address</legend>
+            <label>Street:</label> <input name="street">
+            <label>Zip code / post code:</label> <input name="postcode">
+          </fieldset>
+        </form>
+        <div class="shadowbox">
+          <p>My mother has <span class="highlight">blue</span> eyes.</p>
+          <hr>
+          <p>The "mark" element is used to <mark>mark</mark> to highlight content</p>
+          <p>paragraph 3</p>
+        </div>
     </body>
 </html>
