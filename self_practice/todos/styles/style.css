@@ -8,3 +8,70 @@ html, body {
     background: rgb(245, 245, 245);
     overflow: auto;
 }
+
+.todo-app__root {
+    margin: 0 auto;
+    width: 50em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: lem;
+    color: #4d4d4d;
+    font-weight: 300;
+}
+
+.todo-app__header {
+    margin-bottom: lem;
+}
+
+.todo-app__title {
+    font-size: 100px;
+    font-weight: 100;
+    text-align: center;
+    color: rgba(175, 47, 47, 0.15);
+    margin: 0;
+    padding: 0;
+}
+
+.todo-app__main {
+    width: 100%;
+}
+
+.todo-app__input {
+    width: 100%;
+    height: 5rem;
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+    color: inherit;
+    font-size: 24px;
+    font-weight: 200;
+    line-height: 1.4em;
+    box-shadow: inset 0px 0px 10px 2px rgba(0, 0, 0, 0.048);
+}
+
+.todo-app__input::placeholder {
+    font-weight: 100;
+    opacity: 0.6;
+   }
+
+#target {
+    width: 50px;
+    height: 50px;
+    border: 1px solid gray;
+   }
+#target > div {
+    border-radius: 50%;
+   }
+#outer {
+    width: 100%;
+    height: 100%;
+    border: 1px solid red;
+    background-color: #225591;
+   }
+#inner {
+    width: 80%;
+    height: 80%;
+    border: 1px solid green;
+    background-color: black;
+   }
