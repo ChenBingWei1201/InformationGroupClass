@@ -6,7 +6,7 @@ var footer = document.getElementById("todo-footer");
 var root = document.getElementById("root");
 var clearDiv = document.getElementsByClassName("todo-app__clean")[0];
 var clearButton = document.getElementById("clear_completed_button");
-var state = ALL;
+var state = ALL; // state = 0
 var lastIdx = 0;
 
 /* Utils */
