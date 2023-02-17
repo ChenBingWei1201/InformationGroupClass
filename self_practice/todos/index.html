@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>todos</title>
-        <link rel="shortcut icon" href="images/award.png">
-        <link rel="stylesheet" href="styles/style.css">
-    </head>
-    <body>
-        <div id="root" class="todo-app__root">
 
-            <header class="todo-app__header">
-                <h1 class="todo-app__title">todos</h1>
-            </header>
+<head>
+    <meta charset="utf-8">
+    <title>todos</title>
+    <link rel="shortcut icon" href="images/award.png">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
 
-            <section class="todo-app__main">
-                <input id="todo-input" class="todo-app__input" placeholder="What needs to be done?">
-                <ul id="todo-list" class="todo-app__list">
-                    <!-- <li class="todo-app__item"> // 當按下enter, new一個新的item
+<body>
+    <div id="root" class="todo-app__root">
+
+        <header class="todo-app__header">
+            <h1 class="todo-app__title">todos</h1>
+        </header>
+
+        <section class="todo-app__main">
+            <input id="todo-input" class="todo-app__input" placeholder="What needs to be done?">
+            <ul id="todo-list" class="todo-app__list">
+                <!-- <li class="todo-app__item"> // 當按下enter, new一個新的item
                         <div class="todo-app__checkbox">
                             <input id="0" type="checkbox" />
                             <label for="0"></label>
@@ -24,7 +26,7 @@
                         <h1 class="todo-app__item-detail">This is the first TODO.</h1>
                         <img class="todo-app__item-x" src="./images/x.png" alt="x">
                     </li> -->
-                    <!-- 
+                <!-- 
                         要創造:
                         <li>
                             <div> 
@@ -35,25 +37,26 @@
                             <img>
                         </li>
                      -->
-                </ul>
-                
-            </section>
+            </ul>
 
-            <footer class="todo-app__footer" id="todo-footer">
-                <div class="todo-app__total">
-                    <span id="todo-app-count">0</span> left
-                </div>
-                <ul class="todo-app__view-buttons">
-                    <li><button id="todo-all">All</button></li>
-                    <li><button id="todo-active">Active</button></li>
-                    <li><button id="todo-completed">Completed</button></li>
-                </ul>
-                <div class="todo-app__clean">
-                    <button id="todo-clear-completed">Clear completed</button>
-                </div>
-            </footer>
-            
-            <script src="scripts/script.js"></script>
-        </div>
-    </body>
+        </section>
+
+        <footer class="todo-app__footer" id="todo-footer">
+            <div class="todo-app__total">
+                <span id="todo-app-count">0</span> left
+            </div>
+            <ul class="todo-app__view-buttons">
+                <li><button id="todo-all">All</button></li>
+                <li><button id="todo-active">Active</button></li>
+                <li><button id="todo-completed">Completed</button></li>
+            </ul>
+            <div class="todo-app__clean">
+                <button id="todo-clear-completed">Clear completed</button>
+            </div>
+        </footer>
+
+        <script src="scripts/practice.js"></script>
+    </div>
+</body>
+
 </html>
