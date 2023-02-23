@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,35 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 200px;
+  height: 250px;
+  margin: auto;
+  background: #ffffff;
+  border: 3px solid black;
+}
+
+.App-display {
+  font-size: 4em;
+  font-weight: 500;
+}
+
+.App-controls {
+  width: 100%;
+}
+
+.App-controls button {
+  background: none;
+  border: 3px solid rgb(184, 184, 184);
+  padding: 8px 20px;
+  font-size: 2em;
+  margin: 10px;
+  cursor: pointer;
 }

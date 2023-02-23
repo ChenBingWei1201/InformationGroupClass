@@ -1,7 +1,7 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-
+import { useState } from "react";
 // function App() {
 //   return ( // JSX syntax:
 //     <div className="App">
@@ -22,24 +22,16 @@ import React from 'react';
 //     </div>
 //   );
 // }
-function App(props) {
+
+function App() {
+  const [count, setCount] = useState(100);
   return (
-    <div className="score" id="score">
-      <table>
-        <caption>{props.scoreCard.name}'s Score</caption>
-        <tr>
-          <th>{props.columnIndex[0]}</th>
-          <th>{props.columnIndex[1]}</th>
-        </tr>
-        <tr>
-          <td>props.scoreCard.records</td>
-          <td>{props.math}</td>
-        </tr>
-        <tr>
-          <td>Chinese</td>
-          <td>{props.chinese}</td>
-        </tr>
-      </table>
+    <div className="App">
+      <h1 className='App-display'>{count}</h1>
+      <span className='App-controls'>
+        <button className='Plus' onClick={() => setCount((c) => c + 1)}>+</button>
+        <button className='Minus' onClick={() => setCount((c) => c - 1)}>-</button>
+      </span>
     </div>
   )
 }
