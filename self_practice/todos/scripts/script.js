@@ -72,6 +72,7 @@ const listenInput = (e) => {
         return;
     }
     const task = e.target.value; // 當在<input>內按下enter，把字存到task
+    console.log(task);
     const data = { task, id, checked: false }; // 一開始新增時是沒有亮綠燈的
     addNewTodo(data); // 呼叫func. 去新增item
     todoData[id] = { task, checked: false }; // 把這些資訊(物件)放到陣列當中存放
