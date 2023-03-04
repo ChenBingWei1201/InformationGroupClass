@@ -111,10 +111,10 @@ html, body {
   height: 100%;
 }
 
-.todo-app__item-done {
+/* .todo-app__item-done {
   text-decoration: line-through;
   opacity: 0.5;
-}
+} */
 
 .todo-app__checkbox {
   width: 30px;
