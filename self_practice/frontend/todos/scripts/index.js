@@ -6,13 +6,13 @@ let state = "All";
 let counter = 0;
 const ulNode = document.getElementById("todo-list");
 const removeTodo = (id) => {
-    const liNode = document.getElementById(`li-${id}`);
-    liNode === null || liNode === void 0 ? void 0 : liNode.remove();
-    const spanNode = document.getElementById("todo-app-count");
+    var _a;
+    (_a = document.getElementById(`li-${id}`)) === null || _a === void 0 ? void 0 : _a.remove();
     counter += todoData[id].checked ? 0 : -1;
-    delete (todoData[id]);
+    const spanNode = document.getElementById("todo-app-count");
     if (spanNode !== null)
         spanNode.innerHTML = `${counter}`;
+    delete (todoData[id]);
 };
 const changeChecked = (id) => {
     counter += todoData[id].checked ? 1 : -1;
@@ -24,7 +24,7 @@ const changeChecked = (id) => {
         liNode.className = todoData[id].checked ? "todo-app__item todo-app__item-done" : "todo-app__item";
     }
 };
-const NewTodo = (data) => {
+const addNewTodo = (data) => {
     const { task, id, checked } = data;
     const liNode = document.createElement("li");
     const divNode = document.createElement("div");
@@ -58,13 +58,13 @@ const NewTodo = (data) => {
         spanNode.innerHTML = `${counter}`;
 };
 const listenInput = (e) => {
+    var _a;
     if (e.key !== "Enter") {
         return;
     }
-    const task = e.target.value;
-    console.log(task);
+    const task = (_a = e.target) === null || _a === void 0 ? void 0 : _a.value;
     const data = { task, id, checked: false };
-    NewTodo(data);
+    addNewTodo(data);
     todoData[id] = { task, checked: false };
     e.target.value = "";
     id += 1;
@@ -75,31 +75,22 @@ const changeStatus = (new_state) => {
     if (new_state === state)
         return;
     state = new_state;
-    switch (state) {
-        case "All":
-            Object.keys(todoData).forEach((id) => {
-                const liNode = document.getElementById(`li-${id}`);
-                if (liNode !== null)
+    Object.keys(todoData).forEach((id) => {
+        const { checked } = todoData[id];
+        const liNode = document.getElementById(`li-${id}`);
+        if (liNode !== null)
+            switch (state) {
+                case "All":
                     liNode.style.display = "flex";
-            });
-            break;
-        case "Active":
-            Object.keys(todoData).forEach((id) => {
-                const { checked } = todoData[id];
-                const liNode = document.getElementById(`li-${id}`);
-                if (liNode !== null)
+                    break;
+                case "Active":
                     liNode.style.display = checked ? "none" : "flex";
-            });
-            break;
-        case "Completed":
-            Object.keys(todoData).forEach((id) => {
-                const { checked } = todoData[id];
-                const liNode = document.getElementById(`li-${id}`);
-                if (liNode !== null)
+                    break;
+                case "Completed":
                     liNode.style.display = !checked ? "none" : "flex";
-            });
-            break;
-    }
+                    break;
+            }
+    });
 };
 (_a = document.getElementById("todo-all")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", () => changeStatus("All"));
 (_b = document.getElementById("todo-active")) === null || _b === void 0 ? void 0 : _b.addEventListener("click", () => changeStatus("Active"));

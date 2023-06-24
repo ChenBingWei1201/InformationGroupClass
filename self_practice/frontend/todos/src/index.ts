@@ -12,15 +12,18 @@ type Data = {
 const ulNode: HTMLElement | null = document.getElementById("todo-list");
 
 const removeTodo = (id: number | string): void => {
-    const liNode: HTMLElement | null = document.getElementById(`li-${id}`);
-    liNode?.remove();
+    // remove todo item on web page
+    document.getElementById(`li-${id}`)?.remove();
 
-    const spanNode: HTMLSpanElement | null= document.getElementById("todo-app-count");
     counter += todoData[id].checked ? 0 : -1;
-    delete(todoData[id]);
     
+    // update the value of the left items
+    const spanNode: HTMLSpanElement | null= document.getElementById("todo-app-count");
     if (spanNode !== null)
-        spanNode.innerHTML = `${counter}`;
+    spanNode.innerHTML = `${counter}`;
+
+    // finally, delete the data stored in the array.
+    delete(todoData[id]);
 }
 
 
@@ -28,6 +31,7 @@ const changeChecked = (id: number): void => {
     counter += todoData[id].checked ? 1 : -1;
     todoData[id].checked = !todoData[id].checked;
 
+    // change the value of the left on the web page and <li>'s class name
     const spanNode: HTMLSpanElement | null= document.getElementById("todo-app-count");
     const liNode: HTMLElement | null = document.getElementById(`li-${id}`);
     if (spanNode !== null && liNode !== null) {
@@ -36,9 +40,11 @@ const changeChecked = (id: number): void => {
     }
 }
 
-const NewTodo = (data: Data): void => {
-    const { task, id, checked}: Data = data
+// add new object in html
+const addNewTodo = (data: Data): void => {
+    const { task, id, checked }: Data = data
 
+    // create html tags
     const liNode: HTMLLIElement | null = document.createElement("li");
     const divNode: HTMLDivElement | null = document.createElement("div");
     const inputNode: HTMLInputElement | null = document.createElement("input");
@@ -46,6 +52,7 @@ const NewTodo = (data: Data): void => {
     const h1Node: HTMLHeadingElement | null = document.createElement("h1");
     const imgNode: HTMLImageElement | null = document.createElement("img");
     
+    // add className, id, and other attributes on tags
     liNode.className = "todo-app__item";
     liNode.id = `li-${id}`
     divNode.className = "todo-app__checkbox";
@@ -62,6 +69,7 @@ const NewTodo = (data: Data): void => {
     imgNode.alt = "x";
     imgNode.addEventListener("click", () => removeTodo(id));
 
+    // assemble all of them
     divNode.appendChild(inputNode);
     divNode.appendChild(labelNode);
     liNode.appendChild(divNode);
@@ -69,22 +77,25 @@ const NewTodo = (data: Data): void => {
     liNode.appendChild(imgNode);
 
     ulNode?.appendChild(liNode);
+
+    // new todo item
     counter += 1;
     const spanNode: HTMLSpanElement | null = document.getElementById("todo-app-count");
     if (spanNode !== null)
-        spanNode.innerHTML = `${counter}`;
+        spanNode.innerHTML = `${counter}`; // change <span>inner text</span>
 }
 
-const listenInput = (e: any): void => {
+// listening what the person typing and storing it.
+const listenInput = (e: KeyboardEvent): void => {
     if (e.key !== "Enter") {
         return;
     }
-    const task: string = e.target.value;
-    console.log(task);
+    const task: string = (e.target  as HTMLInputElement)?.value;
+    // console.log(task);
     const data: Data = { task, id, checked: false}
-    NewTodo(data);
-    todoData[id] = { task, checked: false}
-    e.target.value = "";
+    addNewTodo(data); // add new object in html
+    todoData[id] = { task, checked: false}; // store data into array
+    (e.target  as HTMLInputElement).value = ""; // clear input value
     id += 1;
 }
 
@@ -95,33 +106,22 @@ const changeStatus = (new_state: string):void => {
     if (new_state === state)
         return;
     state = new_state;
-    switch (state) {
-        case "All":
-            Object.keys(todoData).forEach( (id: string): void => {
-                // const { checked } = todoData[id];
-                const liNode = document.getElementById(`li-${id}`);
-                if (liNode !== null)
+    Object.keys(todoData).forEach( (id: string): void => {
+        const { checked } = todoData[id];
+        const liNode = document.getElementById(`li-${id}`);
+        if (liNode !== null)
+            switch (state) {
+                case "All":
                     liNode.style.display = "flex"; // 按下All，每個item都要秀出，用flex display
-            })
-            break;
-        case "Active":
-            Object.keys(todoData).forEach( (id: string): void => {
-                const { checked } = todoData[id];
-                const liNode = document.getElementById(`li-${id}`);
-                if (liNode !== null)
+                    break;
+                case "Active":
                     liNode.style.display = checked ? "none" : "flex";
-            })
-            break;
-        case "Completed":
-            Object.keys(todoData).forEach( (id: string): void => {
-                const { checked } = todoData[id];
-                const liNode = document.getElementById(`li-${id}`);
-                if (liNode !== null)
+                    break;
+                case "Completed":
                     liNode.style.display = !checked ? "none" : "flex";
-            })
-            break;
-        }
-
+                    break;
+            }
+    })
 }
 
 document.getElementById("todo-all")?.addEventListener("click", () => changeStatus("All"));
@@ -129,7 +129,7 @@ document.getElementById("todo-active")?.addEventListener("click", () => changeSt
 document.getElementById("todo-completed")?.addEventListener("click", () => changeStatus("Completed"));
 
 const removeCompleted = (): void => {
-    Object.keys(todoData).forEach( (id: string | number): void => {
+    Object.keys(todoData).forEach( (id: string): void => {
         const { checked } = todoData[id];
         if (checked)
             removeTodo(id);
