@@ -23,7 +23,7 @@ function TodoList({data, setData, status, removeItem}: DATA_FUNCTION): JSX.Eleme
                     return {...item, checked: !item.checked};
                 else
                     return item;
-            })
+            });
 
         });
     }
