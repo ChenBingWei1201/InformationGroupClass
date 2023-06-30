@@ -66,6 +66,7 @@ const listenInput = (e) => {
     const data = { task, id, checked: false };
     addNewTodo(data);
     todoData[id] = { task, checked: false };
+    console.log(typeof todoData[id]);
     e.target.value = "";
     id += 1;
 };

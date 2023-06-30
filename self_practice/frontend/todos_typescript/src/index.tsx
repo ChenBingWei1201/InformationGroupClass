@@ -5,7 +5,7 @@ import TodoApp from './components/TodoApp';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById('root-todo-app') as HTMLElement
 );
 root.render(
   <React.StrictMode>

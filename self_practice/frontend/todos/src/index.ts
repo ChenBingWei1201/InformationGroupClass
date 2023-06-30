@@ -95,6 +95,7 @@ const listenInput = (e: KeyboardEvent): void => {
     const data: Data = { task, id, checked: false}
     addNewTodo(data); // add new object in html
     todoData[id] = { task, checked: false}; // store data into array
+    console.log(typeof todoData[id]);
     (e.target  as HTMLInputElement).value = ""; // clear input value
     id += 1;
 }

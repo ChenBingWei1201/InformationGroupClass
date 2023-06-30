@@ -29,13 +29,16 @@ const TodoList = ({ todoData, removeTodo, status, setTodoData }) => {
                 })}
             </ul>);
     }
+
     switch (status) {
         case "All":
-            return <List todoData={todoData} />
+            return <List todoData={todoData} />;
         case "Active":
-            return <List todoData={todoData.filter((todo) => todo.checked !== true)} /> // todoData didn't be modified
+            return <List todoData={todoData.filter((todo) => todo.checked !== true)} />; // todoData didn't be modified
         case "Completed":
-            return <List todoData={todoData.filter((todo) => todo.checked === true)} />
+            return <List todoData={todoData.filter((todo) => todo.checked === true)} />;
+        default:
+            return <List todoData={todoData} />;
     }
 }
 export default TodoList;
