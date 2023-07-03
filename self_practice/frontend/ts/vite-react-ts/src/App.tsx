@@ -1,16 +1,16 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import ListGroup from './components/ListGroup'
-
+import Button from './components/Button';
+import Alert from './components/Alert';
+import { useState } from 'react';
 
 function App() {
-  const  items = ["Taiwan", "Japan", "Korea", "China"];
-  const heading = "Countries";
-  const onSlectItem = (item: string): void => {
-    console.log(item);
-  }
+
+  const [push, setPush] = useState(false); // need a state
+
   return (
   <>
-    <ListGroup items={items}  heading={heading} onSlectItem={onSlectItem}/>
+    {push ? <Alert onClose={() => setPush(false)}>Alert!</Alert> : <></>} 
+    <Button onClick={() => setPush(true)}>Button</Button>
   </>
   );
 }

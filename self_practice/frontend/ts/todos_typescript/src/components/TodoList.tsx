@@ -1,8 +1,8 @@
 import X from '../images/x.png';
 
 interface DATA_FUNCTION {
-    data: any;
-    setData: React.Dispatch<any>;
+    data: never[];
+    setData: React.Dispatch<React.SetStateAction<never[]>>;
     status: string;
     setStatus: React.Dispatch<React.SetStateAction<string>>;
     removeItem: any;

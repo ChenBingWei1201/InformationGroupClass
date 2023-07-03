@@ -1,6 +1,7 @@
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 import { useState } from 'react';
+
 function TodoMain() {
     const [task, setTask] = useState(""); // each item in todo list
     const [value, setValue] = useState(""); // value of an input

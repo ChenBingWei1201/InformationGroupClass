@@ -13,6 +13,7 @@ function ListGroup({items, heading, onSlectItem} : Props) {
     const changeSlect = (id: number) => {
         setSlectItem(id);
     };
+    
     return (
     <> 
         <h1>{heading}</h1>
