@@ -4,11 +4,9 @@ const prisma = new PrismaClient()
 
 const main = async () => {
   // ... you will write your Prisma Client queries here
-  const post = await prisma.post.update({
-    where: { id: 2 },
-    data: { content: 'Hi!' },
+  const deletedUser = await prisma.user.delete({
+    where: { email: 'alice@prisma.io' },
   })
-  console.log(post);
 }
 
 main()
