@@ -38,7 +38,7 @@ function TodoList({data, setData, status, removeItem}: DATA_FUNCTION): JSX.Eleme
                                 <input id={`${item.id}`} type="checkbox" onChange={() => changeChecked(item.id)} checked={item.checked}/>
                                 <label htmlFor={`${item.id}`}></label>
                             </div>
-                            <h1 className="todo-app__item-detail">{item.task}</h1>
+                            <h1 style={{ textDecoration: item.checked ? "line-through" : undefined, opacity: item.checked ? 0.5 : 1}} className="todo-app__item-detail">{item.task}</h1>
                             <img className="todo-app__item-x" src={X} alt="x" onClick={() => removeItem(item.id)}/>
                         </li>
                         ); 

@@ -27,15 +27,18 @@ function TodoMain(): JSX.Element {
     }
     // todo : replace any to ... (I don't know now)
     const listenInput = (e: any): void => {
-        setTask((e.target as HTMLInputElement).value);
+        if (e.target.value.length !== 0) {
 
-        if (e.key !== "Enter") {
-            setValue((e.target as HTMLInputElement).value); // return void
-        }
-        else {
-            setValue(""); // clear value in input as soon as I press "Enter"
-            addNewItem(); // form a new item, store information into it, and put it into data array
-            // console.log(task);
+            setTask((e.target as HTMLInputElement).value);
+    
+            if (e.key !== "Enter") {
+                setValue((e.target as HTMLInputElement).value); // return void
+            }
+            else {
+                setValue(""); // clear value in input as soon as I press "Enter"
+                addNewItem(); // form a new item, store information into it, and put it into data array
+                // console.log(task);
+            }
         }
     }
 
