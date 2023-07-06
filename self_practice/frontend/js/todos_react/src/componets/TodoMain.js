@@ -1,6 +1,6 @@
 import TodoList from "./TodoList";
 import Footer from "./Footer";
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function TodoMain() {
     const [task, setTask] = useState(""); // each item in todo list
@@ -8,6 +8,14 @@ function TodoMain() {
     const [id, setId] = useState(0); // id of an item
     const [todoData, setTodoData] = useState([]); // an array to store items.
     const [status, setStatus] = useState("All"); // three status : "All", "Active", "Completed"
+    
+    /* Use useRef to keep track of previous state values:
+    const prev = useRef("");
+    useEffect(() => {
+        prev.current = task;
+    }, [task]);
+    console.log(prev.current);
+    */
 
     const addNewTodo = () => { // add new todo item
         const item = { // construct a new item 
@@ -32,12 +40,14 @@ function TodoMain() {
     }
 
     const handleKeyDown = (e) => {
-        setTask(e.target.value);
-        if (e.key !== "Enter")
-            setValue(e.target.value);
-        else {
-            setValue("");
-            addNewTodo();
+        if (e.target.value.length !== 0) {
+            setTask(e.target.value);
+            if (e.key !== "Enter")
+                setValue(e.target.value);
+            else {
+                setValue("");
+                addNewTodo();
+            }
         }
     }
 
