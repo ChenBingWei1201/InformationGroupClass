@@ -1,41 +1,97 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const Joi = require("joi"); // return is a class
+const express = require("express"); // return is a function
+const app = express();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+app.use(express.json()); // use(return a piece of middleware) 
 
-var app = express();
+const courses = [
+  { id: 1, name: "Chinese" },
+  { id: 2, name: "Math" },
+  { id: 3, name: "English" }
+]
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
+// router
+app.get('/', (req,res) => {
+  res.send("Hello world");
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+app.get('/api/courses', (req,res) => {
+  res.send(courses);
 });
 
-module.exports = app;
+app.post('/api/courses', (req, res) => {
+  const { error } = validateCourse(course);
+  if (error) {
+    res.status(400).send(error.details[0].message);
+    return;
+  }
+
+  const course = { 
+    id: courses.length + 1, 
+    name: req.body.name
+  };
+  courses.push(course);
+  res.send(course);
+});
+
+// update data
+app.put('/api/courses/:id', (req, res) => {
+
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course)
+    res.status(404).send('The course of the given ID is not found.');
+  
+  //
+  const { error } = validateCourse(req.body);
+  if (error) {
+    res.status(400).send(error.details[0].message);
+    return;
+  }
+
+  // 
+  course.name = req.body.name;
+  res.send(course);
+  
+});
+
+function validateCourse(course) {
+  const schema = Joi.object({
+    name: Joi.string().min(3).required()
+  });
+  
+  return schema.validate(course);
+}
+
+
+
+// /api/course/1
+app.get('/api/courses/:id', (req, res) => {
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course)
+    res.status(404).send('The course of the given ID is not found.');
+  res.send(course);
+});
+
+// app.get('/api/post/:year/:month', (req, res) => {
+//   res.send(req.query);
+// });
+
+// port
+const port = process.env.port || 3000;
+app.listen(port, () => console.log(`Listening to the port ${port}...`));
+
+
+
+
+// delete
+app.delete('/api/courses/:id', (req, res) => {
+  const course = courses.find(c => c.id === parseInt(req.params.id));
+  if (!course)
+    res.status(404).send('The course of the given ID is not found.');
+  
+  // delete
+  const index = courses.indexOf(course);
+  courses.splice(index, 1);
+
+  res.send(course);
+});
