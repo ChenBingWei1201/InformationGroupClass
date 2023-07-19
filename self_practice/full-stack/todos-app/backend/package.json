@@ -1,0 +1,34 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "dotenv -e .env.development -- ts-node-esm ./src/index.ts",
+    "generate": "dotenv -e .env.development -- npx prisma generate",
+    "migrate": "dotenv -e .env.development -- npx prisma migrate dev --name init",
+    "studio": "dotenv -e .env.development -- npx prisma studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@apollo/server": "^4.7.5",
+    "@prisma/client": "^5.0.0",
+    "dotenv": "^16.3.1",
+    "graphql": "^16.7.1",
+    "nodemon": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6",
+    "@babel/preset-env": "^7.22.9",
+    "@types/node": "^20.4.2",
+    "prisma": "^5.0.0",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.6.0",
+    "typescript": "^5.1.6"
+  }
+}

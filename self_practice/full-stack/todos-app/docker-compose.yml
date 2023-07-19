@@ -1,0 +1,17 @@
+version: '3.3'
+services :
+  db:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todos-app
+  admin:
+    image: adminer
+    restart: always
+    depends_on: 
+      - db
+    ports:
+      - "8080:8080"

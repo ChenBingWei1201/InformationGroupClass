@@ -1,0 +1,24 @@
+{
+  "name": "todos-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "install_all": "pnpm install && cd frontend && pnpm install && cd .. && cd backend && pnpm install",
+    "frontend": "cd frontend && pnpm start",
+    "backend": "cd backend && pnpm start"
+  },
+  "dependencies": {
+    "pnpm": "^8.6.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.9",
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6",
+    "@babel/preset-env": "^7.22.9",
+    "@types/node": "^20.4.2"
+  }
+}
