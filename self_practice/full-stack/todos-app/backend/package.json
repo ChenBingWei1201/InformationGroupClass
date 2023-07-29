@@ -4,17 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "dotenv -e .env.development -- ts-node-esm ./src/index.ts",
-    "generate": "dotenv -e .env.development -- npx prisma generate",
-    "migrate": "dotenv -e .env.development -- npx prisma migrate dev --name init",
-    "studio": "dotenv -e .env.development -- npx prisma studio"
+    "start": "dotenv -e .env -- ts-node-esm ./src/index.ts",
+    "generate": "dotenv -e .env -- npx prisma generate",
+    "migrate": "dotenv -e .env -- npx prisma migrate dev --name init",
+    "studio": "dotenv -e .env -- npx prisma studio"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@apollo/server": "^4.7.5",
+    "@apollo/client": "^3.7.17",
+    "@apollo/server": "^4.9.0",
     "@prisma/client": "^5.0.0",
     "dotenv": "^16.3.1",
     "graphql": "^16.7.1",
@@ -25,7 +26,7 @@
     "@babel/core": "^7.22.9",
     "@babel/node": "^7.22.6",
     "@babel/preset-env": "^7.22.9",
-    "@types/node": "^20.4.2",
+    "@types/node": "^20.4.5",
     "prisma": "^5.0.0",
     "ts-node": "^10.9.1",
     "tslib": "^2.6.0",

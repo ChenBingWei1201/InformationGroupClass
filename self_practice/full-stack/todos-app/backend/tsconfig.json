@@ -7,6 +7,8 @@
       "module": "esnext",
       "moduleResolution": "node",
       "esModuleInterop": true,
-      "types": ["node"]
+      "types": ["node"],
+      "noEmit": true,
+      "allowImportingTsExtensions": true,
     }
   }
