@@ -3,10 +3,10 @@ services :
   db:
     image: postgres
     ports:
-      - "5432:5432"
+      - "6348:6348"
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: todo
+      POSTGRES_PASSWORD: passwd
       POSTGRES_DB: todos-app
   admin:
     image: adminer

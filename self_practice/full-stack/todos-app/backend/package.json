@@ -7,7 +7,8 @@
     "start": "dotenv -e .env -- ts-node-esm ./src/index.ts",
     "generate": "dotenv -e .env -- npx prisma generate",
     "migrate": "dotenv -e .env -- npx prisma migrate dev --name init",
-    "studio": "dotenv -e .env -- npx prisma studio"
+    "studio": "dotenv -e .env -- npx prisma studio",
+    "setup": "npm install dotenv-cli && npm install ts-node"
   },
   "keywords": [],
   "author": "",

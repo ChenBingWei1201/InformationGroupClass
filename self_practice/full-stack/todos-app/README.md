@@ -26,6 +26,13 @@ This will have postgres and adminer running for the backend
 docker-compose up -d
 ```
 
+### Install dotenv & ts-node
+
+```sh
+cd backend
+pnpm setup
+```
+
 ### Test Prisma(backend)
 
 ```sh

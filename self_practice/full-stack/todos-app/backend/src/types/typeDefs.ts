@@ -6,6 +6,12 @@ const typeDefs = `#graphql
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "Book" type defines the queryable fields for every book in our data source.
+
+  input TodoInput {
+    id: Int!
+    title: String!
+  }
+
   type Todo {
     id: Int!
     title: String!
@@ -16,6 +22,10 @@ const typeDefs = `#graphql
   # case, the "books" query returns an array of zero or more Books (defined above).
   type Query {
     AllTodos: [Todo]
+  }
+
+  type Mutation {
+    AddTodo(todoInput: TodoInput!): Todo
   }
 `;
 export { typeDefs };
