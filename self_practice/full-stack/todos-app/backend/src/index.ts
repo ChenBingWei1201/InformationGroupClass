@@ -3,6 +3,7 @@ import { startStandaloneServer } from '@apollo/server/standalone';
 import { typeDefs } from './types/typeDefs.ts';
 import { Query } from './resolvers/Query.ts' 
 import { Mutation } from './resolvers/Mutation.ts';
+import { Subscription } from './resolvers/Subscription.ts';
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 const server = new ApolloServer({

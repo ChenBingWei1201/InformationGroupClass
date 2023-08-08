@@ -9,16 +9,11 @@
   "scripts": {
     "install_all": "pnpm install && cd frontend && pnpm install && cd .. && cd backend && pnpm install",
     "frontend": "cd frontend && pnpm start",
-    "backend": "cd backend && pnpm start"
+    "backend": "cd backend && pnpm start",
+    "setup": "npm install axios && cd backend && npm install dotenv-cli && npm install ts-node"
   },
   "dependencies": {
+    "axios": "^1.4.0",
     "pnpm": "^8.6.3"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.22.9",
-    "@babel/core": "^7.22.9",
-    "@babel/node": "^7.22.6",
-    "@babel/preset-env": "^7.22.9",
-    "@types/node": "^20.4.2"
   }
 }

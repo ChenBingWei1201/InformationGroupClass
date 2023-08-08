@@ -15,7 +15,12 @@ const TodoFoot = ({data, setData, setStatus}: DATA): JSX.Element => {
     
     // clear the items whose checked are true == restore the items whose checked aren't true (item.checked !== true)
     const clearCompleted = () => {
-        setData(data.filter((item: Item) => item.checked !== true)); // an item will be return if item.checked is not true.
+        try {
+            setData(data.filter((item: Item) => item.checked !== true)); // an item will be return if item.checked is not true.
+
+        } catch (err: any) {
+            console.log(`Error: ${err.message}`);
+        }
     }
 
     const left = data.filter((item: Item) => item.checked !== true).length;

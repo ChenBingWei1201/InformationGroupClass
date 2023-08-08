@@ -26,10 +26,9 @@ This will have postgres and adminer running for the backend
 docker-compose up -d
 ```
 
-### Install dotenv & ts-node
+### Install dotenv & ts-node & axios
 
 ```sh
-cd backend
 pnpm setup
 ```
 

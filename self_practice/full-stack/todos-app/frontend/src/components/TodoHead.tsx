@@ -1,7 +1,11 @@
-function TodoHead(): JSX.Element {
+type Title = {
+    title: String
+};
+
+function TodoHead({ title }: Title): JSX.Element {
     return (
         <header className="todo-app__header">
-            <h1 className="todo-app__title">todos</h1>
+            <h1 className="todo-app__title">{title}</h1>
         </header>
     );
 }
