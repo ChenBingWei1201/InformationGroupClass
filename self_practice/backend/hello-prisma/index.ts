@@ -4,9 +4,12 @@ const prisma = new PrismaClient()
 
 const main = async () => {
   // ... you will write your Prisma Client queries here
-  const deletedUser = await prisma.user.delete({
-    where: { email: 'alice@prisma.io' },
-  })
+  const allUsers = await prisma.user.findMany({
+    include: {
+      posts: true
+    }
+  });
+  console.dir(allUsers)
 }
 
 main()
