@@ -13,13 +13,12 @@ router.get('/guess', (req, res) => {
     const answer = getNumber(); 
     // ⽤ req.query.number 拿到前端輸入的數字
     const num = parseInt(req.query.number);
-    console.log(num);
 
     // check if NOT a num or not in range [1,100]
     // 如果有問題 =>
     // res.status(406).send({ msg: 'Not a legal number.'}) 
-    if (num > 100 || num < 1) {
-        res.status(406).send({ msg: `"${num}" is not a legal number (1 - 100).`});
+    if (num > 100 || num < 1 || isNaN(num)) {
+        res.status(406).send({ msg: `"${req.query.number}" is not a legal number (1 - 100).`});
         return;
     }
     if (num === answer)

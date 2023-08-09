@@ -5,22 +5,30 @@ const instance = axios.create({
 })
 
 const startGame = async () => {
-    const { data: { msg }} = await instance.post('/start');
-    return msg;
+    try {
+        const { data: { msg }} = await instance.post('/start');
+        return msg;
+    }  catch (error) {
+        alert(`Error: ${error.message}. 500 Internl Server Error.`);
+    }
 }
 
 const guess = async (number) => {
     try {
         const { data: { msg } } = await instance.get('/guess', { params: { number } });
         return msg;
-    } catch (error) {
-        console.log(`Error: ${error.message}`);
+    }  catch (error) {
+        alert(`Error: ${error.response.data.msg}`);
     }
 }
 
 const restart = async () => {
-    const { data: { msg }} = await instance.post('/restart');
-    return msg;
+    try {
+        const { data: { msg }} = await instance.post('/restart');
+        return msg;
+    }  catch (error) {
+        alert(`Error: ${error.message}. 500 Internl Server Error.`);
+    }
 };
 
 export { startGame, guess, restart };
