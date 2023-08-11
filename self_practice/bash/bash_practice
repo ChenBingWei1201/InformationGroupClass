@@ -1,0 +1,11 @@
+#! /bin/bash
+
+echo "What is your name?"
+
+read name
+
+echo "What chapter are you in Linux Basics for Hackers?"
+
+read chapter
+
+echo "Welcom" $name "to Chapter" $chapter "of Linux Basics for Hackers"
