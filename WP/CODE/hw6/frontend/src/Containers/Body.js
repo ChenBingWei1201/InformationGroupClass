@@ -39,8 +39,7 @@ const ContentPaper = styled(Paper)`
 const Body = () => {
   const classes = useStyles();
 
-  const { messages, addCardMessage, addRegularMessage, addErrorMessage } =
-    useScoreCard();
+  const { messages, addCardMessage, addRegularMessage, addErrorMessage } = useScoreCard();
 
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
@@ -62,8 +61,10 @@ const Body = () => {
       score,
     });
 
-    if (!card) addErrorMessage(message);
-    else addCardMessage(message);
+    if (!card) 
+      addErrorMessage(message);
+    else 
+      addCardMessage(message);
   };
 
   const handleQuery = async () => {
@@ -76,8 +77,10 @@ const Body = () => {
       },
     });
 
-    if (!messages) addErrorMessage(message);
-    else addRegularMessage(...messages);
+    if (!messages) 
+      addErrorMessage(message);
+    else 
+      addRegularMessage(...messages);
   };
 
   return (

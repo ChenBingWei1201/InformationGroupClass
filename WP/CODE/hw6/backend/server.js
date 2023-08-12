@@ -1,7 +1,49 @@
+import bodyParser from 'body-parser';
+import express from 'express';
 import mongoose from 'mongoose';
+import dotenv from "dotenv-defaults";
 
-mongoose.connect('mongodb+srv://JoeChen:29021788joe@cluster0.4kg7wa9.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then((res) => console.log("mongo db connection created"));
+dotenv.config();
+const app = express();
+const port = process.env.PORT || 4000;
+app.use(bodyParser.json());
+
+app.listen(port, () =>
+  console.log(`Example app listening on https://localhost:${port}`),
+);
+
+mongoose
+  .connect(
+    process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((res) => console.log("mongo db connection created"));
+  
+const saveUser = async (id, name) => {
+  const existing = await User.findOne({ name }); { name: name }
+  if (existing) 
+    throw new Error(`data ${name} exists!!`);
+  try {
+    const newUser = new User({ id, name });
+    console.log("Created user", newUser);
+    return newUser.save();
+  } catch (e) {
+    throw new Error("User creation error: " + e); }
+};
+const deleteDB = async () => {
+  try {
+    await User.deleteMany({});
+    console.log("Database deleted");
+  } catch (e) {
+    throw new Error("Database deletion failed"); }
+};
+
+const db = mongoose.connection;
+db.on("error", (err) => console.log(err));
+db.once("open", async () => {
+  await deleteDB();
+  await saveUser(57, "Ric");
+  await saveUser(108, "Sandy");
+  await saveUser(77, "Peter");
+});
