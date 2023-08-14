@@ -3,8 +3,8 @@ import express from 'express';
 import dotenv from "dotenv-defaults";
 import cors from 'cors';
 import db from './db.js';
-// import routes from './routes';
-import ScoreCard from './models/ScoreCard.js';
+import routes from './routes/index.js';
+// import ScoreCard from './models/ScoreCard.js';
 
 
 dotenv.config();
