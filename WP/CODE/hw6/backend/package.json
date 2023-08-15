@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "server": "nodemon server.js --ext js --exec babel-node"
+    "server": "nodemon src/server.js --ext js --exec babel-node"
   },
   "dependencies": {
     "body-parser": "^1.20.2",
