@@ -1,0 +1,24 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "nodemon server.js --ext js --exec babel-node"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "dotenv-defaults": "^5.0.2",
+    "express": "^4.18.2",
+    "mongoose": "^7.4.3",
+    "nodemon": "^3.0.1",
+    "ws": "^8.13.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/node": "^7.22.10",
+    "@babel/preset-env": "^7.22.10"
+  }
+}
