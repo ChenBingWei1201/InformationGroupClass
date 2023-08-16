@@ -6,7 +6,7 @@ const ERROR_MESSAGE_COLOR = '#fb3640';
 
 const ScoreCardContext = createContext({
   messages: [],
-
+  clearMessages: () => {},
   addCardMessage: () => {},
   addRegularMessage: () => {},
   addErrorMessage: () => {},
@@ -34,10 +34,15 @@ const ScoreCardProvider = (props) => {
     setMessages([...messages, makeMessage(message, ERROR_MESSAGE_COLOR)]);
   };
 
+  const clearMessages = (message) => {
+    setMessages([{message: message, color: REGULAR_MESSAGE_COLOR}]);
+  };
+
   return (
     <ScoreCardContext.Provider
       value={{
         messages,
+        clearMessages,
         addCardMessage,
         addRegularMessage,
         addErrorMessage,
