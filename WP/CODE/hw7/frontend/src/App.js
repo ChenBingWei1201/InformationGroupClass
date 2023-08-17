@@ -1,12 +1,13 @@
 import './App.css'
 import { Button, Input, Tag, message } from 'antd'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import useChat from './hooks/useChat';
 
 function App() {
   const { status, messages, sendMessage } = useChat();
   const [username, setUsername] = useState("");
   const [body, setBody] = useState("");
+  const bodyRef = useRef(null);
 
   const displayStatus = (s) => {
     if(s.msg) {
@@ -18,6 +19,8 @@ function App() {
           break;
         case 'error':
           message.error(content);
+          break;
+        default:
           break;
       }
     }
@@ -51,13 +54,25 @@ function App() {
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         style={{ marginBottom: 10 }}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter')
+            bodyRef.current.focus();
+        }}
       ></Input>
       <Input.Search
+        ref={bodyRef}
         value={body}
         onChange={(e) => setBody(e.target.value)}
         enterButton="Send"
         placeholder="Type a message here..."
         onSearch={(msg) => {
+          if (!msg || !username) {
+            displayStatus({
+              type: 'error',
+              msg: 'Please enter a username and a message body.'
+            })
+            return;
+          }
           sendMessage({ name: username, body: msg })
           setBody("");
         }}
