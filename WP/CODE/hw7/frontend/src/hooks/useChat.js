@@ -8,7 +8,7 @@ const useChat = () => {
 
     client.onmessage = (byteString) => {
         const { data } = byteString;
-        const { task, payload } = JSON.parse(data);
+        const [ task, payload ] = JSON.parse(data); // is [] not {}
         switch (task) {
             case "init": 
                 setMessages(payload);
@@ -19,13 +19,16 @@ const useChat = () => {
             case "status":
                 setStatus(payload);
                 break;
+            case "cleared":
+                setMessages([]);
+                break;
             default:
                 break;
         };
     };
 
-    const sendData = (data) => {
-        client.send(JSON.stringify(data));
+    const sendData = async (data) => {
+        await client.send(JSON.stringify(data));
     };
 
     const sendMessage = (msg) => {
@@ -37,7 +40,11 @@ const useChat = () => {
         sendData(["input", msg]);
     };
 
-    return { status, messages, sendMessage };
+    const clearMessages = () => {
+        sendData(["clear"]);
+    };
+
+    return { status, messages, sendMessage, clearMessages };
 };
 
 export default useChat;

@@ -1,7 +1,6 @@
 import Message from "./models/message.js";
 
 const sendData = (data, ws) => {
-  // console.log("call sendData()")
   ws.send(JSON.stringify(data));
 }
 
@@ -14,13 +13,13 @@ export default {
     Message.find().sort({ created_at: -1 }).limit(100)
       .then((res) => {
         // initialize app with existing messages
-        sendData(["init", res], ws);
+        sendData(['init', res], ws);
       })
       .catch((e) => {
         throw new Error(e);
-      }) ;
+      });
   },
-  onMessage: (ws) => {
+  onMessage: (ws) => (
     async (byteString) => {
       const { data } = byteString;
       const [task, payload] = JSON.parse(data);
@@ -43,9 +42,17 @@ export default {
             msg: 'Message sent.'
           }, ws);
           break;
+        case 'clear':
+          await Message.deleteMany();
+          sendData(['cleared'], ws);
+          sendStatus({
+            type: 'info',
+            msg: 'Message cache cleared.'
+          }, ws);
+          break;
         default:
           break;
       }
     }
-  }
+  )
 }

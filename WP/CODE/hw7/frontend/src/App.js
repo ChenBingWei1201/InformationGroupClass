@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import useChat from './hooks/useChat';
 
 function App() {
-  const { status, messages, sendMessage } = useChat();
+  const { status, messages, sendMessage, clearMessages } = useChat();
   const [username, setUsername] = useState("");
   const [body, setBody] = useState("");
   const bodyRef = useRef(null);
@@ -12,13 +12,16 @@ function App() {
   const displayStatus = (s) => {
     if(s.msg) {
       const { type, msg } = s;
-      const content = { content: msg, duration: 0.5 };
+      const content = { content: msg, duration: 0.7 };
       switch (type) {
         case 'success':
           message.success(content);
           break;
         case 'error':
           message.error(content);
+          break;
+        case 'info':
+          message.info(content);
           break;
         default:
           break;
@@ -34,7 +37,7 @@ function App() {
     <div className="App">
       <div className="App-title">
         <h1>Simple Chat</h1>
-        <Button type="primary" danger >
+        <Button type="primary" danger onClick={clearMessages}>
           Clear
         </Button>
       </div>
@@ -73,7 +76,7 @@ function App() {
             })
             return;
           }
-          sendMessage({ name: username, body: msg })
+          sendMessage({ name: username, body: msg });
           setBody("");
         }}
       ></Input.Search>
