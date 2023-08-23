@@ -3,7 +3,7 @@ import Title from "../components/Title.js";
 import { useChat } from "../hooks/useChat.js";
 
 const SignIn = () => {
-  const { me, setMe, signedIn,setSignedIn, displayStatus } = useChat();
+  const { me, setMe, signedIn, setSignedIn, displayStatus } = useChat();
   const handleLogin = (name) => {
     if(!name)
       displayStatus({
