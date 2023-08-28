@@ -1,6 +1,5 @@
 import http from 'http';
 import express from 'express';
-// import cors from 'cors';
 import WebSocket from 'ws';
 import wsConnect from './wsConnect.js';
 import mongoose from 'mongoose';

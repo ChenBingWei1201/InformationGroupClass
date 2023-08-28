@@ -4,7 +4,6 @@ import { message } from 'antd'
 const LOCALSTORAGE_KEY = "save-me";
 const saveMe = localStorage.getItem(LOCALSTORAGE_KEY); 
 
-
 // 1. define context
 const ChatContext = createContext({
   status: {},
@@ -61,12 +60,8 @@ const ChatProvider = (props) => {
   };
 
   const sendMessage = (msg) => {
-    setMessages([...messages, msg]);
-    // setStatus({ // frontend display success
-    //   type: "success",
-    //   msg: "Message sent."
-    // });
-    sendData(["input", msg]);
+    setMessages([...messages, msg]); // msg = { name, to , body }
+    sendData(["MESSAGE", msg]);
   };
       
   const clearMessages = () => {
@@ -93,15 +88,17 @@ const ChatProvider = (props) => {
     }
   }
 
-  const startChat = (name, to) =>  {
-
+  const startChat = async (name, to) =>  {
+    if (!name || !to)
+      throw new Error("Name or to is required!");
+    await sendData(["CHAT", { name, to }]);
   }
   
   return (
     <ChatContext.Provider
       value={{
         status, me, signedIn, messages, setMe, setSignedIn,
-        sendMessage, clearMessages, displayStatus
+        sendMessage, clearMessages, displayStatus, startChat
       }}
       {...props}
     />

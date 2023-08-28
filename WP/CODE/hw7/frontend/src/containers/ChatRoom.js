@@ -28,10 +28,10 @@ const FootRef = styled.div`
 `;
 
 const ChatRoom = () => {
-  const { me, messages, displayStatus, sendMessage } = useChat();
+  const { me, messages, displayStatus, sendMessage, startChat } = useChat();
   // const [username, setUsername] = useState("");
   const [body, setBody] = useState("");
-  const [msgSent,setMsgSent] = useState(false);
+  const [msgSent, setMsgSent] = useState(false);
   const [activeKey, setActiveKey] = useState(""); // 設定為目前被點選的 chatbox
   const [modalOpen, setModalOpen] = useState(false); // 控制Modal的開關
   const [chatBoxes, setChatBoxes] = useState([]);
@@ -43,7 +43,7 @@ const ChatRoom = () => {
       ) : (
           <ChatBoxWrapper>
             {chat.map(({name, body}, i) => (
-              <Message isMe={name === me} message={body} key={i}></Message>
+              <Message isMe={(name === me)} message={body} key={i}></Message>
               ))
             }
             <FootRef ref={msgFooter}></FootRef>
@@ -60,9 +60,11 @@ const ChatRoom = () => {
     if (chatBoxes.some(({key}) => key === friend)) 
       throw new Error(friend +"'s chat box has already opened.");
     const chat = extractChat(friend);
-    setChatBoxes([...chatBoxes,
-      { label: friend, children: chat,
-        key: friend }]);
+    setChatBoxes([...chatBoxes, { 
+      label: friend, 
+      children: chat,
+      key: friend 
+    }]);
     setMsgSent(true);
     return friend;
   };
@@ -94,6 +96,16 @@ const ChatRoom = () => {
     setMsgSent(false);
   }, [msgSent]);
 
+  useEffect(() => {
+    if (chatBoxes.length !== 0) {
+      const index = chatBoxes.findIndex(({key}) => key === activeKey);
+      const chat = extractChat();
+      const newChatBoxes = [...chatBoxes.slice(0, index), {label: activeKey, children: chat, key: activeKey}, ...chatBoxes.slice(index+1,)];
+      setChatBoxes(newChatBoxes);
+      setMsgSent(true);
+    }
+  }, [messages]);
+
   return (
       <>
         <Title name={me}></Title>
@@ -104,7 +116,8 @@ const ChatRoom = () => {
             activeKey={activeKey}
             onChange={(key) => {
               setActiveKey(key);
-              extractChat(key);
+              startChat(me, key);
+              // extractChat(key);
             }}
             onEdit={(targetKey, action) => { // 按下 '+' 後會觸發 onEdit, 傳入 action = 'add'
                 if (action === "add")  // 開啟⼀個 Modal, 讓使⽤者填入 new chatbox label
@@ -119,11 +132,12 @@ const ChatRoom = () => {
           <ChatModal
             open={modalOpen}
             onCreate={({ name }) => { // 按下 Create 後的動作
+              startChat(me, name);
               setActiveKey(createChatBox(name));
-              extractChat(name);
+              // extractChat(name);
               setModalOpen(false);
             }}
-            onCancel={() => { setModalOpen(false); }} // 按下 Cancel 後的動作
+            onCancel={() => setModalOpen(false)} // 按下 Cancel 後的動作
           />
         </>
         <Input.Search
@@ -139,9 +153,9 @@ const ChatRoom = () => {
               })
               return;
             }
-            sendMessage({ body: msg });
+            sendMessage({ name: me, to: activeKey, body: msg });
             setBody("");
-            setMsgSent(true)
+            setMsgSent(true);
           }}
         ></Input.Search>
       </>

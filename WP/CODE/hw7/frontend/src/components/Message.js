@@ -19,7 +19,7 @@ const StyledMessage = styled.div`
   }
 `;
 
-const Message = ({ isMe, message }) => {
+const Message = ({ isMe , message }) => {
   return (
     <StyledMessage isMe={isMe}>
       <p>{message}</p>
