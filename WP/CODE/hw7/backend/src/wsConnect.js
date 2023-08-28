@@ -100,20 +100,25 @@ export default {
           const To = await validateUser(to);
           
           let initData = [];
-          const chatMessages = (await validateChatBox(chatBoxName, [Name, To])).messages;
-          console.log("chatMessages", chatMessages);
-          console.log("-------------------------------");
+          const chatBox = (await validateChatBox(chatBoxName, [Name, To]));
+          const chatMessages = chatBox.messages;
+
           chatMessages.map((cM) => {
             const m = {
               name: cM.sender.name,
-              to: to, // wrong 要真的追回去 populate
+              to: (chatBox.users.filter((user) => {
+                if (cM.sender.name === to)
+                  return user.name !== to;
+                else
+                  return user.name === to;
+              }))[0].name,
               body: cM.body
-            }
-            console.log(cM);
+            };
             initData = [...initData, m];
           });
           
           // Respond to client
+          // console.log(initData);
           sendData(['init', initData], ws); // success!
           break;
         }

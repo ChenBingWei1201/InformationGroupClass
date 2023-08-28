@@ -26,6 +26,7 @@ const ChatBoxesWrapper = styled(Tabs)`
 const FootRef = styled.div`
   height: 20px
 `;
+let friend = "";
 
 const ChatRoom = () => {
   const { me, messages, displayStatus, sendMessage, startChat } = useChat();
@@ -37,6 +38,7 @@ const ChatRoom = () => {
   const [chatBoxes, setChatBoxes] = useState([]);
 
   const displayChat = (chat) => {
+    console.log("chat", chat);
     return (
       (chat.length === 0) ? (
         <p style={{ color: '#ccc' }}> No messages... </p>
@@ -52,13 +54,15 @@ const ChatRoom = () => {
     );
   }
 
-  const extractChat = (friend) => {
-    return displayChat(messages.filter(({name, body}) => ((name === friend) || (name === me))));
+  const extractChat = (friend) => { // call it two times
+    const ch = displayChat(messages.filter(({name, to, body}) => ((name === friend) || (name === me))));
+    return ch;
   }
 
   const createChatBox = (friend) => {
-    if (chatBoxes.some(({key}) => key === friend)) 
+    if (chatBoxes.some(({key}) => key === friend)) {
       throw new Error(friend +"'s chat box has already opened.");
+    }
     const chat = extractChat(friend);
     setChatBoxes([...chatBoxes, { 
       label: friend, 
@@ -99,7 +103,7 @@ const ChatRoom = () => {
   useEffect(() => {
     if (chatBoxes.length !== 0) {
       const index = chatBoxes.findIndex(({key}) => key === activeKey);
-      const chat = extractChat();
+      const chat = extractChat(friend);
       const newChatBoxes = [...chatBoxes.slice(0, index), {label: activeKey, children: chat, key: activeKey}, ...chatBoxes.slice(index+1,)];
       setChatBoxes(newChatBoxes);
       setMsgSent(true);
@@ -117,7 +121,6 @@ const ChatRoom = () => {
             onChange={(key) => {
               setActiveKey(key);
               startChat(me, key);
-              // extractChat(key);
             }}
             onEdit={(targetKey, action) => { // 按下 '+' 後會觸發 onEdit, 傳入 action = 'add'
                 if (action === "add")  // 開啟⼀個 Modal, 讓使⽤者填入 new chatbox label
@@ -132,9 +135,9 @@ const ChatRoom = () => {
           <ChatModal
             open={modalOpen}
             onCreate={({ name }) => { // 按下 Create 後的動作
+              friend = name;
               startChat(me, name);
               setActiveKey(createChatBox(name));
-              // extractChat(name);
               setModalOpen(false);
             }}
             onCancel={() => setModalOpen(false)} // 按下 Cancel 後的動作
