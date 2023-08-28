@@ -23,7 +23,7 @@ db.once('open', () => {
   });
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 server.listen(port, () =>
   console.log(`Example app listening on https://localhost:${port}`),
 );

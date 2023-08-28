@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useChat = () => {
-    const client = new WebSocket('ws://localhost:4000');
+    const client = new WebSocket('ws://localhost:5000');
 
     const [messages, setMessages] = useState([]);
     const [status, setStatus] = useState("");
@@ -33,10 +33,10 @@ const useChat = () => {
 
     const sendMessage = (msg) => {
         setMessages([...messages, msg]);
-        setStatus({
-            type: "success",
-            msg: "Message sent."
-        });
+        // setStatus({
+        //     type: "success",
+        //     msg: "Message sent."
+        // });
         sendData(["input", msg]);
     };
 
