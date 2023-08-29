@@ -60,8 +60,13 @@ const ChatProvider = (props) => {
   };
 
   const sendMessage = (msg) => {
-    setMessages([...messages, msg]); // msg = { name, to , body }
-    sendData(["MESSAGE", msg]);
+    const { name, to , body } = msg;
+    if (!name || !to || !body)
+      alert("Your name,friend, or message are required!");
+    else {
+      setMessages([...messages, { name, to , body }]); // msg = { name, to , body }
+      sendData(["MESSAGE", { name, to , body }]);
+    }
   };
       
   const clearMessages = () => {
@@ -90,8 +95,9 @@ const ChatProvider = (props) => {
 
   const startChat = async (name, to) =>  {
     if (!name || !to)
-      throw new Error("Name or to is required!");
-    await sendData(["CHAT", { name, to }]);
+      alert("Name or to is required!");
+    else
+      await sendData(["CHAT", { name, to }]);
   }
   
   return (

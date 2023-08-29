@@ -26,19 +26,17 @@ const ChatBoxesWrapper = styled(Tabs)`
 const FootRef = styled.div`
   height: 20px
 `;
-let friend = "";
 
 const ChatRoom = () => {
   const { me, messages, displayStatus, sendMessage, startChat } = useChat();
-  // const [username, setUsername] = useState("");
   const [body, setBody] = useState("");
   const [msgSent, setMsgSent] = useState(false);
   const [activeKey, setActiveKey] = useState(""); // 設定為目前被點選的 chatbox
   const [modalOpen, setModalOpen] = useState(false); // 控制Modal的開關
-  const [chatBoxes, setChatBoxes] = useState([]);
+  const [chatBoxes, setChatBoxes] = useState([]); // displayed  chat boxes
+  const [friend, setFriend] = useState(""); // store the person to whom I send messages 
 
   const displayChat = (chat) => {
-    console.log("chat", chat);
     return (
       (chat.length === 0) ? (
         <p style={{ color: '#ccc' }}> No messages... </p>
@@ -55,7 +53,7 @@ const ChatRoom = () => {
   }
 
   const extractChat = (friend) => { // call it two times
-    const ch = displayChat(messages.filter(({name, to, body}) => ((name === friend) || (name === me))));
+    const ch = displayChat(messages.filter(({name}) => ((name === friend) || (name === me))));
     return ch;
   }
 
@@ -85,7 +83,7 @@ const ChatRoom = () => {
           "" : chatBoxes[index-1].key
         : activeKey
       : ""
-      )
+      );
   }
 
   // 超過視窗⾼度的留⾔可以⾃動上捲
@@ -93,7 +91,7 @@ const ChatRoom = () => {
   const scrollToBottom = () => {
     msgFooter.current?.scrollIntoView
     ({ behavior: 'smooth', block: "start" });
-  };
+  }
 
   useEffect(() => {
     scrollToBottom();
@@ -119,6 +117,7 @@ const ChatRoom = () => {
             type='editable-card'
             activeKey={activeKey}
             onChange={(key) => {
+              setFriend(key);
               setActiveKey(key);
               startChat(me, key);
             }}
@@ -130,15 +129,19 @@ const ChatRoom = () => {
             }}
             items={chatBoxes}
           >
-            <FootRef ref={msgFooter}/>
+            {/* <FootRef ref={msgFooter}/> */}
           </ChatBoxesWrapper>
           <ChatModal
             open={modalOpen}
             onCreate={({ name }) => { // 按下 Create 後的動作
-              friend = name;
-              startChat(me, name);
-              setActiveKey(createChatBox(name));
-              setModalOpen(false);
+              if (name !== me) {
+                setFriend(name);
+                startChat(me, name);
+                setActiveKey(createChatBox(name));
+                setModalOpen(false);
+              }
+              else
+                alert("Your name shouldn't equal to your friend.");
             }}
             onCancel={() => setModalOpen(false)} // 按下 Cancel 後的動作
           />

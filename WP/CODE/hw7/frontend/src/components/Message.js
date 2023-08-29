@@ -22,7 +22,6 @@ const StyledMessage = styled.div`
 const Message = ({ isMe , message }) => {
   return (
     <StyledMessage isMe={isMe}>
-      {/* {console.log("isMe", isMe)} */}
       <p>{message}</p>
     </StyledMessage>
   );
