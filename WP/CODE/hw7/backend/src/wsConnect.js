@@ -36,12 +36,16 @@ const validateChatBox = async (chatBoxName, participants) => {
   let box = await ChatBoxModel.findOne({ name: chatBoxName });
   const user1 = await UserModel.findOne({ _id: participants[0] });
   const user2 = await UserModel.findOne({ _id: participants[1] });
+
   if (!box) {
     box = await new ChatBoxModel({ name: chatBoxName, users: participants }).save();
     user1.chatBoxes = [...user1.chatBoxes, box._id];
-    user2.chatBoxes = [...user2.chatBoxes, box._id];
     await user1.save();
-    await user2.save();
+
+    if (user1.name !== user2.name) { // can send message to myself
+      user2.chatBoxes = [...user2.chatBoxes, box._id];
+      await user2.save();
+    }
   } // first new ChatBoxModel
   return box.populate(["users", { path: "messages", populate: "sender" }]);
 };

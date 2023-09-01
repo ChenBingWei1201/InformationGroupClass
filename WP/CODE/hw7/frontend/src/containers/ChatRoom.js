@@ -134,19 +134,11 @@ const ChatRoom = () => {
           <ChatModal
             open={modalOpen}
             onCreate={({ name }) => { // 按下 Create 後的動作
-              if (name !== me) {
                 setFriend(name);
                 startChat(me, name);
                 setActiveKey(createChatBox(name));
                 setModalOpen(false);
-              }
-              else
-                displayStatus({
-                  type: "error",
-                  msg: "Your name shouldn't equal to your friend."
-                })
-                // alert("Your name shouldn't equal to your friend.");
-            }}
+            }} // can send message to myself
             onCancel={() => setModalOpen(false)} // 按下 Cancel 後的動作
           />
         </>
