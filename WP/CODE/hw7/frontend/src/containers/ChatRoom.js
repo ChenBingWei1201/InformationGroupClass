@@ -141,7 +141,11 @@ const ChatRoom = () => {
                 setModalOpen(false);
               }
               else
-                alert("Your name shouldn't equal to your friend.");
+                displayStatus({
+                  type: "error",
+                  msg: "Your name shouldn't equal to your friend."
+                })
+                // alert("Your name shouldn't equal to your friend.");
             }}
             onCancel={() => setModalOpen(false)} // 按下 Cancel 後的動作
           />

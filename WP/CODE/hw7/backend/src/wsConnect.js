@@ -16,16 +16,11 @@ const sendData = (data, ws) => {
 const sendStatus = (payload, ws) => {
   sendData(["status", payload], ws);
 }
-let counter = 0;
+
 const broadcastMessage = (wss, data, status) => { // the biggest problem!!!
   wss.clients.forEach((client) => { // 8 things in wss.clients, so it will run 8 times!!!
-    // counter += 1;
-    // console.log(counter);
-    // if (counter <= 8) {
     sendData(data, client);         // and generate two messages for success 
     sendStatus(status, client);
-    // counter = 0;
-  // }
   });
 };
 
