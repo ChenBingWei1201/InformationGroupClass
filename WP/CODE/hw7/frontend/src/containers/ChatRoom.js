@@ -1,35 +1,14 @@
-import styled from 'styled-components';
 import { useChat } from '../hooks/useChat.js';
-import { Input, Tabs } from 'antd';
 import { useState, useRef, useEffect } from 'react';
 import Message from '../components/Message.js';
 import Title from '../components/Title.js';
 import ChatModal from '../components/ChatModal.js';
 import InputForm from '../components/InputForm.js';
-const ChatBoxWrapper = styled.div`
-  height: calc(240px - 36px);
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
-`;
-
-const ChatBoxesWrapper = styled(Tabs)`
-  width: 100%;
-  height: 300px;
-  background: #eeeeee52;
-  border-radius: 10px;
-  margin: 20px;
-  padding: 20px;
-  overflow: auto;
-`;
-
-const FootRef = styled.div`
-  height: 20px
-`;
+import { ChatBoxWrapper, ChatBoxesWrapper, FootRef } from '../components/Wrapper.js';
 
 const ChatRoom = () => {
-  const { me, messages, displayStatus, sendMessage, startChat } = useChat();
-  const [body, setBody] = useState("");
+  const { me, messages/*, displayStatus, sendMessage*/, startChat } = useChat();
+  // const [body, setBody] = useState("");
   const [msgSent, setMsgSent] = useState(false);
   const [activeKey, setActiveKey] = useState(""); // 設定為目前被點選的 chatbox
   const [modalOpen, setModalOpen] = useState(false); // 控制Modal的開關
