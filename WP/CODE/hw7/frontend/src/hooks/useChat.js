@@ -43,6 +43,7 @@ const ChatProvider = (props) => {
         break;
       case "output":
         setMessages(() => [...messages, ...payload]);
+        setMessages((ms) => ms.slice(0, -1));
         break;
       case "status":
         setStatus(payload);
@@ -55,8 +56,8 @@ const ChatProvider = (props) => {
     };
   };
 
-  const sendData = async (data) => {
-    await client.send(JSON.stringify(data));
+  const sendData = (data) => {
+    client.send(JSON.stringify(data));
   };
 
   const sendMessage = (msg) => {

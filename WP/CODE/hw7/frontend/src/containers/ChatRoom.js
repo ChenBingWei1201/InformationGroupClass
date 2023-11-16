@@ -89,14 +89,13 @@ const ChatRoom = () => {
   // 超過視窗⾼度的留⾔可以⾃動上捲
   const msgFooter = useRef(null);
   const scrollToBottom = () => {
-    msgFooter.current?.scrollIntoView
-    ({ behavior: 'smooth', block: "start" });
+    msgFooter.current?.scrollIntoView({ behavior: 'smooth', block: "start" });
   }
 
   useEffect(() => {
     scrollToBottom();
     setMsgSent(false);
-  }, [msgSent]);
+  }, [msgSent, chatBoxes]);
 
   useEffect(() => {
     if (chatBoxes.length !== 0) {
