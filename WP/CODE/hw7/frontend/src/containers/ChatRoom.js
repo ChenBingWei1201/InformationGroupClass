@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react';
 import Message from '../components/Message.js';
 import Title from '../components/Title.js';
 import ChatModal from '../components/ChatModal.js';
-
+import InputForm from '../components/InputForm.js';
 const ChatBoxWrapper = styled.div`
   height: calc(240px - 36px);
   display: flex;
@@ -141,7 +141,8 @@ const ChatRoom = () => {
             onCancel={() => setModalOpen(false)} // 按下 Cancel 後的動作
           />
         </>
-        <Input.Search
+        <InputForm setMsgSent={setMsgSent} activeKey={activeKey}/>
+        {/* <Input.Search
           enterButton="Send"
           placeholder="Type a message here..."
           value={body}
@@ -158,7 +159,8 @@ const ChatRoom = () => {
             setBody("");
             setMsgSent(true);
           }}
-        ></Input.Search>
+        ></Input.Search> */}
+
       </>
 
   )
